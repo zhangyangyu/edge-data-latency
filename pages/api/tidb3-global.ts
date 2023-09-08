@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { connect } from '@tidbcloud/serverless';
+import mysql from 'mysql2/promise';
 
 const start = Date.now();
 
@@ -8,11 +8,21 @@ export default async function api(request: NextApiRequest,
   const count = Number(request.query.count);
   const time = Date.now();
 
-  const conn = connect({url: process.env.TiDB_DATABASE_URL})
+  const connection = await mysql.createConnection({
+    host: process.env.TIDB_HOST,
+    port: 4000,
+    user: process.env.TIDB_USER,
+    password: process.env.TIDB_PASSWORD,
+    database: 'test',
+    ssl: {
+      minVersion: 'TLSv1.2',
+      rejectUnauthorized: true
+    }
+  });
 
   let data = null;
   for (let i = 0; i < count; i++) {
-    data = await conn.execute(`
+    data = await connection.execute(`
       SELECT emp_no, first_name, last_name
       FROM employees
       LIMIT 10`)

@@ -23,7 +23,7 @@ export default async function api( request: NextApiRequest,
     data,
     queryDuration: Date.now() - time,
     invocationIsCold: start === time,
-    invocationRegion: (req.headers.get("x-vercel-id") ?? "").split(":")[1] || null,
+    invocationRegion: (request.headers.x-vercel-id ?? "").split(":")[1] || null,
   });
 }
 
