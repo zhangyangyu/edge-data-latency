@@ -202,6 +202,18 @@ export default function Page() {
                   icon={TiDBCloudIcon}
               />
               <DropdownItem
+                  data-testid="neon2"
+                  value="neon2"
+                  text="neon2"
+                  icon={NeonIcon}
+              />
+              <DropdownItem
+                  data-testid="planetscale2"
+                  value="planetscale2"
+                  text="planetscale2"
+                  icon={DatabaseIcon}
+              />
+              <DropdownItem
                   data-testid="tidb3"
                   value="tidb3"
                   text="tidb3"
