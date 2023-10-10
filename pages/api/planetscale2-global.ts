@@ -1,6 +1,7 @@
 import { Kysely } from "kysely";
 import { PlanetScaleDialect } from "kysely-planetscale";
 import { NextRequest as Request, NextResponse as Response } from "next/server";
+import {NextApiRequest, NextApiResponse} from "next";
 
 interface EmployeeTable {
   emp_no: number;
@@ -22,9 +23,11 @@ const db = new Kysely<Database>({
 
 const start = Date.now();
 
-export default async function api(req: Request) {
-  const count = toNumber(new URL(req.url).searchParams.get("count"));
+export default async function api(request: NextApiRequest,
+                                  response: NextApiResponse) {
+  const count = Number(request.query.count);
   const time = Date.now();
+
 
   let data = null;
   for (let i = 0; i < count; i++) {
@@ -35,7 +38,7 @@ export default async function api(req: Request) {
     .execute();
   }
 
-  return Response.json(
+  return response.json(
       {
         data,
         queryDuration: Date.now() - time,
