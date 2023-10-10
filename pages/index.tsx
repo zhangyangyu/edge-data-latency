@@ -73,6 +73,7 @@ export default function Page() {
     setIsTestRunning(false);
   }, [runTest, queryCount, dataService, shouldTestGlobal, shouldTestRegional]);
 
+
   return (
     <main className="p-6 max-w-5xl flex flex-col gap-3">
       <Head>
