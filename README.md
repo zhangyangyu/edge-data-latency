@@ -2,7 +2,7 @@
 
 This demo helps observe the latency characteristics of querying different popular data services from varying compute locations.
 
-https://edge-data-latency.vercel.app
+https://edge-data-latency.vercel.appx
 
 ## Providers
 
