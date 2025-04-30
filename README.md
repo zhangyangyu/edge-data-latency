@@ -1,4 +1,4 @@
-# Edge Database Latency
+# Edge Database Latency1
 
 This demo helps observe the latency characteristics of querying different popular data services from varying compute locations.
 
